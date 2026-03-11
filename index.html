@@ -9,27 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Password Strength Tester</h1>
+    <div class="content-wrapper">
+        <div class="container">
+            <h1>Password Strength Tester</h1>
 
-        <div class="input-group">
-            <label for="passwordInput">Enter Password:</label>
-            <div class="password-wrapper">
-                <input type="password" id="passwordInput" placeholder="Type your password here">
-                <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
-                    <i class="fas fa-eye" id="eyeIcon"></i>
-                </span>
+            <div class="input-group">
+                <label for="passwordInput">Enter Password:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="passwordInput" placeholder="Type your password here">
+                    <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </span>
+                </div>
             </div>
-        </div>
 
-        <button onclick="checkPassword()">Check Strength</button>
+            <button onclick="checkPassword()">Check Strength</button>
 
-        <div id="result">
-            <!-- Results will be displayed here -->
-        </div>
+            <div id="result">
+                <!-- Results will be displayed here -->
+            </div>
 
-        <div id="disclaimer">
-            <p><strong>Disclaimer:</strong> Your password is processed securely in your browser. No data is sent to any server or stored.</p>
+            <div id="disclaimer">
+                <p><strong>Disclaimer:</strong> Your password is processed securely in your browser. No data is sent to any server or stored.</p>
+            </div>
         </div>
     </div>
 
@@ -37,7 +39,6 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="https://github.com/render437/password-strength-tester/" target="_blank" class="repo-link-button">Go to Github Repository</a>
-                <!-- You can add more links here if needed, similar to GitHub's footer -->
             </div>
             <p class="copyright-text">&copy; 2026 | created by render437</p>
         </div>
