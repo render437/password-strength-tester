@@ -25,14 +25,15 @@
 
             <button onclick="checkPassword()">Check Strength</button>
 
-            <!-- Main Results Box -->
+            <!-- Results Area -->
             <div id="resultsContainer" class="results-container">
                 <div id="primaryResults" class="results-box primary">
                     <div id="result">
-                        <!-- Results will be displayed here -->
+                        <!-- Strength and cracking time will be displayed here -->
                     </div>
-                    <div id="detailsTrigger" class="details-trigger" onclick="showPasswordDetails()">
-                        More info / Recommendations
+                    <!-- More Info Trigger - initially hidden -->
+                    <div id="detailsTrigger" class="details-trigger hidden" onclick="showPasswordDetails()">
+                        More Info / Recommendations ▶
                     </div>
                 </div>
 

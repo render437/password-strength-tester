@@ -1,11 +1,10 @@
-/* ... (previous CSS for body, container, h1, input-group, etc.) ... */
-
+/* --- General Styles --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6; /* Light background for the main page */
+    background-color: #f4f7f6;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Push footer to bottom */
     align-items: center;
     min-height: 100vh;
     margin: 0;
@@ -18,8 +17,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    flex-grow: 1;
-    padding-top: 60px; /* Added padding to prevent content from being hidden by footer/header */
+    flex-grow: 1; /* Allows this wrapper to take available vertical space */
+    padding-top: 60px; /* Space for header/potential fixed elements */
     padding-bottom: 30px; /* Space above footer */
 }
 
@@ -31,7 +30,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Prevent container from shrinking too much */
 }
 
 h1 {
@@ -119,20 +118,9 @@ button:disabled {
 }
 
 #result {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #eaf2f8;
-    border-left: 5px solid #3498db;
-    text-align: left;
+    /* Styles for the actual strength/time text */
     font-size: 1.1em;
-    min-height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    border-radius: 0 5px 5px 0;
     color: #34495e;
-    box-sizing: border-box;
     white-space: pre-wrap;
 }
 
@@ -147,7 +135,7 @@ button:disabled {
     border-top: 1px solid #eee;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 0;
+    margin-top: 0; /* Disclaimer is now part of the footer content */
 }
 
 .loader {
@@ -166,13 +154,13 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
-/* NEW: Styles for the results container and boxes */
+/* --- NEW: Styles for the results container and boxes --- */
 .results-container {
     display: flex; /* Arrange boxes side-by-side */
     width: 100%;
     max-width: 500px; /* Match container max-width */
     margin-top: 30px;
-    transition: transform 0.5s ease-in-out; /* For sliding effect */
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out; /* Animation for slide and resize */
     box-sizing: border-box;
 }
 
@@ -182,7 +170,7 @@ button:disabled {
     border-left: 5px solid #3498db;
     text-align: left;
     font-size: 1.1em;
-    min-height: 100px; /* Increased min-height to accommodate more content */
+    min-height: 100px; /* Ensure enough space */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -191,23 +179,24 @@ button:disabled {
     color: #34495e;
     box-sizing: border-box;
     white-space: pre-wrap;
-    position: relative; /* For positioning trigger/close button */
+    position: relative;
 }
 
 .primary {
     flex: 1; /* Takes available space */
-    border-top-right-radius: 0; /* Remove border radius for connection */
+    border-top-right-radius: 0; /* Connect to extended box */
     border-bottom-right-radius: 0;
     margin-right: 5px; /* Small gap between boxes */
+    background-color: #eaf2f8; /* Standard color */
 }
 
 .extended {
     flex: 1; /* Takes available space */
-    border-top-left-radius: 0; /* Remove border radius for connection */
+    border-top-left-radius: 0; /* Connect to primary box */
     border-bottom-left-radius: 0;
-    background-color: #f0f8ff; /* Slightly different background for distinction */
+    background-color: #f0f8ff; /* Slightly different background */
     border-left-color: #2ecc71; /* Green border for advice */
-    flex-direction: column; /* Ensure content stacks */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .hidden {
@@ -221,7 +210,9 @@ button:disabled {
     text-decoration: underline;
     margin-top: 15px;
     transition: color 0.2s ease;
-    align-self: center; /* Center the trigger */
+    align-self: center; /* Center the trigger text */
+    width: 100%; /* Ensure it takes full width to center */
+    text-align: center; /* Center text within its width */
 }
 
 .details-trigger:hover {
@@ -263,8 +254,7 @@ button:disabled {
     background-color: #c0392b;
 }
 
-
-/* Footer Styling */
+/* --- Footer Styling --- */
 .site-footer {
     width: 100%;
     padding: 15px 0;
@@ -307,7 +297,7 @@ button:disabled {
     font-size: 0.75em;
 }
 
-/* Responsive adjustments */
+/* --- Responsive adjustments --- */
 @media (max-width: 768px) {
     .content-wrapper {
         padding-top: 20px;
@@ -336,17 +326,17 @@ button:disabled {
         width: calc(100% - 40px);
     }
 
+    /* Stack boxes vertically on smaller screens */
     .results-container {
-        flex-direction: column; /* Stack boxes on smaller screens */
-        margin-top: 15px;
+        flex-direction: column;
         align-items: center;
     }
 
     .results-box {
-        width: 100%; /* Full width when stacked */
-        max-width: 500px; /* Match container max-width */
-        margin-bottom: 10px; /* Space between stacked boxes */
-        border-radius: 5px !important; /* Apply radius to stacked boxes */
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 10px;
+        border-radius: 5px !important; /* Apply radius when stacked */
         min-height: unset; /* Let content define height */
         padding: 15px; /* Ensure padding is consistent */
     }
@@ -360,7 +350,7 @@ button:disabled {
     }
 
     .details-trigger, .close-details-button {
-        font-size: 0.75em; /* Smaller buttons on small screens */
+        font-size: 0.75em;
     }
 
     .footer-content {
@@ -372,4 +362,37 @@ button:disabled {
     .copyright-text {
         font-size: 0.7em;
     }
+}
+
+/* --- NEW: Styles for the expanding details animation --- */
+.results-container.show-details {
+    /* When details are shown, the primary box needs to shift left
+       and the container needs to become wider to accommodate both. */
+    transform: translateX(-50%); /* Shift container left by half its current width */
+    width: calc(200% - 5px); /* Double width minus the gap for alignment */
+}
+
+/* Ensure the extended box aligns correctly when the primary moves */
+.results-container.show-details .extended {
+    margin-left: 5px; /* Add the gap back for visual separation */
+}
+
+/* Adjust widths of boxes when details are shown */
+.results-container.show-details .results-box.primary {
+    flex: 1 0 50%; /* Primary box takes 50% of the expanded width */
+}
+
+.results-container.show-details .results-box.extended {
+    flex: 1 0 50%; /* Extended box takes 50% of the expanded width */
+}
+
+/* Ensure border radii connect properly when side-by-side */
+.results-container.show-details .primary {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.results-container.show-details .extended {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
