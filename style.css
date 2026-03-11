@@ -1,9 +1,11 @@
+/* ... (previous CSS for body, container, h1, input-group, etc.) ... */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f6; /* Light background for the main page */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute space: main content and footer */
+    justify-content: space-between;
     align-items: center;
     min-height: 100vh;
     margin: 0;
@@ -16,7 +18,9 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    flex-grow: 1; /* Allows this wrapper to take available space */
+    flex-grow: 1;
+    padding-top: 60px; /* Added padding to prevent content from being hidden by footer/header */
+    padding-bottom: 30px; /* Space above footer */
 }
 
 .container {
@@ -27,7 +31,6 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
-    /* margin-bottom: 30px; Removed as footer handles spacing */
     flex-shrink: 0;
 }
 
@@ -142,7 +145,7 @@ button:disabled {
     color: #7f8c8d;
     padding: 10px;
     border-top: 1px solid #eee;
-    width: 100%; /* Match container width */
+    width: 100%;
     box-sizing: border-box;
     margin-top: 0;
 }
@@ -163,54 +166,151 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
-/* Footer Styling - Refined for GitHub-like appearance */
+/* NEW: Styles for the results container and boxes */
+.results-container {
+    display: flex; /* Arrange boxes side-by-side */
+    width: 100%;
+    max-width: 500px; /* Match container max-width */
+    margin-top: 30px;
+    transition: transform 0.5s ease-in-out; /* For sliding effect */
+    box-sizing: border-box;
+}
+
+.results-box {
+    padding: 15px;
+    background-color: #eaf2f8;
+    border-left: 5px solid #3498db;
+    text-align: left;
+    font-size: 1.1em;
+    min-height: 100px; /* Increased min-height to accommodate more content */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    color: #34495e;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    position: relative; /* For positioning trigger/close button */
+}
+
+.primary {
+    flex: 1; /* Takes available space */
+    border-top-right-radius: 0; /* Remove border radius for connection */
+    border-bottom-right-radius: 0;
+    margin-right: 5px; /* Small gap between boxes */
+}
+
+.extended {
+    flex: 1; /* Takes available space */
+    border-top-left-radius: 0; /* Remove border radius for connection */
+    border-bottom-left-radius: 0;
+    background-color: #f0f8ff; /* Slightly different background for distinction */
+    border-left-color: #2ecc71; /* Green border for advice */
+    flex-direction: column; /* Ensure content stacks */
+}
+
+.hidden {
+    display: none;
+}
+
+.details-trigger {
+    font-size: 0.8em;
+    color: #3498db;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 15px;
+    transition: color 0.2s ease;
+    align-self: center; /* Center the trigger */
+}
+
+.details-trigger:hover {
+    color: #2980b9;
+}
+
+.extended h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+#detailsContent ul {
+    padding-left: 20px;
+    margin-top: 0;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+#detailsContent li {
+    margin-bottom: 8px;
+}
+
+.close-details-button {
+    background-color: #e74c3c; /* Red close button */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    align-self: center; /* Center the button */
+}
+
+.close-details-button:hover {
+    background-color: #c0392b;
+}
+
+
+/* Footer Styling */
 .site-footer {
     width: 100%;
-    padding: 15px 0; /* Reduced padding slightly */
-    background-color: #24292f; /* Dark background */
-    color: #c9d1d9; /* Light text */
-    font-size: 0.8em; /* Base footer font size */
+    padding: 15px 0;
+    background-color: #24292f;
+    color: #c9d1d9;
+    text-align: center;
     box-sizing: border-box;
-    /* margin-top: auto; Removed as body handles spacing */
 }
 
 .footer-content {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
     align-items: center;
-    max-width: 980px; /* Standard max width */
-    margin: 0 auto; /* Center the content */
-    padding: 0 15px; /* Horizontal padding */
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 .footer-links {
-    margin-bottom: 10px; /* Space below the link group */
+    margin-bottom: 10px;
 }
 
 .repo-link-button {
-    color: #58a6ff; /* GitHub link blue */
+    color: #58a6ff;
     text-decoration: underline;
     transition: color 0.2s ease, text-decoration 0.2s ease;
     font-weight: 500;
-    font-size: 0.9em; /* Slightly larger link text */
+    font-size: 0.9em;
 }
 
 .repo-link-button:hover {
-    color: #79c0ff; /* Lighter blue on hover */
-    text-decoration: none; /* Remove underline on hover */
+    color: #79c0ff;
+    text-decoration: none;
 }
 
 .copyright-text {
     margin: 0;
-    color: #8b949e; /* Greyish text for copyright */
-    opacity: 0.7; /* Reduced opacity */
-    font-size: 0.75em; /* Smaller font size for copyright */
+    color: #8b949e;
+    opacity: 0.7;
+    font-size: 0.75em;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .content-wrapper {
-        padding-top: 20px; /* Add some space at the top for smaller screens */
+        padding-top: 20px;
     }
     .container {
         width: 95%;
@@ -236,6 +336,33 @@ button:disabled {
         width: calc(100% - 40px);
     }
 
+    .results-container {
+        flex-direction: column; /* Stack boxes on smaller screens */
+        margin-top: 15px;
+        align-items: center;
+    }
+
+    .results-box {
+        width: 100%; /* Full width when stacked */
+        max-width: 500px; /* Match container max-width */
+        margin-bottom: 10px; /* Space between stacked boxes */
+        border-radius: 5px !important; /* Apply radius to stacked boxes */
+        min-height: unset; /* Let content define height */
+        padding: 15px; /* Ensure padding is consistent */
+    }
+
+    .primary {
+        margin-right: 0; /* No margin when stacked */
+    }
+
+    .extended {
+        margin-bottom: 10px; /* Space between boxes */
+    }
+
+    .details-trigger, .close-details-button {
+        font-size: 0.75em; /* Smaller buttons on small screens */
+    }
+
     .footer-content {
         max-width: 90%;
     }
@@ -243,6 +370,6 @@ button:disabled {
         font-size: 0.85em;
     }
     .copyright-text {
-        font-size: 0.7em; /* Further reduce copyright size on small screens */
+        font-size: 0.7em;
     }
 }
