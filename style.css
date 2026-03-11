@@ -3,12 +3,20 @@ body {
     background-color: #f4f7f6; /* Light background for the main page */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Distribute space: main content and footer */
     align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #333;
     box-sizing: border-box;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1; /* Allows this wrapper to take available space */
 }
 
 .container {
@@ -19,7 +27,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
-    margin-bottom: 30px; /* Space between container and footer */
+    /* margin-bottom: 30px; Removed as footer handles spacing */
     flex-shrink: 0;
 }
 
@@ -136,7 +144,7 @@ button:disabled {
     border-top: 1px solid #eee;
     width: 100%; /* Match container width */
     box-sizing: border-box;
-    margin-top: 0; /* Disclaimer is now part of the footer content */
+    margin-top: 0;
 }
 
 .loader {
@@ -158,12 +166,12 @@ button:disabled {
 /* Footer Styling - Refined for GitHub-like appearance */
 .site-footer {
     width: 100%;
-    padding: 20px 0; /* More padding */
+    padding: 15px 0; /* Reduced padding slightly */
     background-color: #24292f; /* Dark background */
     color: #c9d1d9; /* Light text */
-    font-size: 0.8em;
-    margin-top: auto; /* Pushes footer to the bottom */
+    font-size: 0.8em; /* Base footer font size */
     box-sizing: border-box;
+    /* margin-top: auto; Removed as body handles spacing */
 }
 
 .footer-content {
@@ -183,7 +191,7 @@ button:disabled {
     color: #58a6ff; /* GitHub link blue */
     text-decoration: underline;
     transition: color 0.2s ease, text-decoration 0.2s ease;
-    font-weight: 500; /* Slightly bolder */
+    font-weight: 500;
     font-size: 0.9em; /* Slightly larger link text */
 }
 
@@ -196,11 +204,14 @@ button:disabled {
     margin: 0;
     color: #8b949e; /* Greyish text for copyright */
     opacity: 0.7; /* Reduced opacity */
-    font-size: 0.85em; /* Slightly larger than previous */
+    font-size: 0.75em; /* Smaller font size for copyright */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .content-wrapper {
+        padding-top: 20px; /* Add some space at the top for smaller screens */
+    }
     .container {
         width: 95%;
         padding: 25px 30px;
@@ -229,9 +240,9 @@ button:disabled {
         max-width: 90%;
     }
     .repo-link-button {
-        font-size: 0.85em; /* Adjust link size for smaller screens */
+        font-size: 0.85em;
     }
     .copyright-text {
-        font-size: 0.8em; /* Adjust copyright size */
+        font-size: 0.7em; /* Further reduce copyright size on small screens */
     }
 }
