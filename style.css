@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    background-color: #f4f7f6; /* Light background for the main page */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
-    margin-bottom: 30px; /* Increased margin to push footer further down */
+    margin-bottom: 30px; /* Space between container and footer */
     flex-shrink: 0;
 }
 
@@ -155,33 +155,36 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
-/* Footer Styling based on GitHub's */
+/* Footer Styling - Refined for GitHub-like appearance */
 .site-footer {
     width: 100%;
-    padding: 15px 0;
-    background-color: #24292f; /* GitHub footer background */
-    color: #c9d1d9; /* GitHub footer text color */
-    text-align: center;
+    padding: 20px 0; /* More padding */
+    background-color: #24292f; /* Dark background */
+    color: #c9d1d9; /* Light text */
     font-size: 0.8em;
     margin-top: auto; /* Pushes footer to the bottom */
+    box-sizing: border-box;
 }
 
 .footer-content {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center;
-    justify-content: center;
-    max-width: 980px; /* Standard max width for GitHub pages */
+    max-width: 980px; /* Standard max width */
     margin: 0 auto; /* Center the content */
     padding: 0 15px; /* Horizontal padding */
+}
+
+.footer-links {
+    margin-bottom: 10px; /* Space below the link group */
 }
 
 .repo-link-button {
     color: #58a6ff; /* GitHub link blue */
     text-decoration: underline;
     transition: color 0.2s ease, text-decoration 0.2s ease;
-    margin-bottom: 10px; /* Space below the link */
     font-weight: 500; /* Slightly bolder */
+    font-size: 0.9em; /* Slightly larger link text */
 }
 
 .repo-link-button:hover {
@@ -192,10 +195,12 @@ button:disabled {
 .copyright-text {
     margin: 0;
     color: #8b949e; /* Greyish text for copyright */
+    opacity: 0.7; /* Reduced opacity */
+    font-size: 0.85em; /* Slightly larger than previous */
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) { /* Adjust breakpoint to be closer to GitHub's */
+@media (max-width: 768px) {
     .container {
         width: 95%;
         padding: 25px 30px;
@@ -221,9 +226,12 @@ button:disabled {
     }
 
     .footer-content {
-        max-width: 90%; /* Adjust max-width for smaller screens */
+        max-width: 90%;
     }
     .repo-link-button {
-        margin-bottom: 8px; /* Less space on smaller screens */
+        font-size: 0.85em; /* Adjust link size for smaller screens */
+    }
+    .copyright-text {
+        font-size: 0.8em; /* Adjust copyright size */
     }
 }
