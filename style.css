@@ -1,0 +1,109 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="password"] {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: border-color 0.3s ease;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#result {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #eaf2f8;
+    border-left: 5px solid #3498db;
+    text-align: left;
+    font-size: 1.1em;
+    min-height: 50px; /* Ensure it has some height even when empty */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    color: #34495e;
+}
+
+/* Specific styling for result content */
+#result span {
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px 30px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
