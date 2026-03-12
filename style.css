@@ -1,93 +1,50 @@
-/* --- General Styles --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f7f6;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Push footer to bottom */
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #333;
-    box-sizing: border-box;
-}
-
-.content-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-grow: 1; /* Allows this wrapper to take available vertical space */
-    padding-top: 60px; /* Space for header/potential fixed elements */
-    padding-bottom: 30px; /* Space above footer */
 }
 
 .container {
     background-color: #ffffff;
-    padding: 30px 40px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 90%;
-    max-width: 500px;
-    flex-shrink: 0; /* Prevent container from shrinking too much */
+    max-width: 700px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
+}
+
+.input-box {
+    margin-bottom: 30px;
 }
 
 h1 {
     color: #2c3e50;
-    margin-bottom: 25px;
-    font-size: 2.2em;
+    margin-bottom: 15px;
 }
 
-.input-group {
+p {
     margin-bottom: 20px;
-    text-align: left;
+    line-height: 1.6;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-
-.password-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-input[type="password"],
-input[type="text"] {
-    width: calc(100% - 40px); /* Account for padding and icon space */
-    padding: 12px 10px;
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-input[type="password"]:focus,
-input[type="text"]:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
-
-.password-toggle-icon {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    color: #777;
-    font-size: 1.1em;
-    padding: 5px;
-    user-select: none;
-    transition: color 0.3s ease;
-}
-
-.password-toggle-icon:hover {
-    color: #3498db;
 }
 
 button {
@@ -95,304 +52,88 @@ button {
     color: white;
     border: none;
     padding: 12px 25px;
-    font-size: 17px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #2980b9;
-    transform: translateY(-2px);
 }
 
-button:active {
-    transform: translateY(0);
-}
-
-button:disabled {
-    background-color: #bdc3c7;
-    cursor: not-allowed;
-    transform: none;
-}
-
-#result {
-    /* Styles for the actual strength/time text */
-    font-size: 1.1em;
-    color: #34495e;
-    white-space: pre-wrap;
-}
-
-#result span {
-    font-weight: bold;
-}
-
-#disclaimer {
-    font-size: 0.85em;
-    color: #7f8c8d;
-    padding: 10px;
-    border-top: 1px solid #eee;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 0; /* Disclaimer is now part of the footer content */
-}
-
-.loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 1s linear infinite;
-    margin: 10px auto;
-    display: none;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* --- NEW: Styles for the results container and boxes --- */
 .results-container {
-    display: flex; /* Arrange boxes side-by-side */
-    width: 100%;
-    max-width: 500px; /* Match container max-width */
     margin-top: 30px;
-    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out; /* Animation for slide and resize */
-    box-sizing: border-box;
-}
-
-.results-box {
-    padding: 15px;
-    background-color: #eaf2f8;
-    border-left: 5px solid #3498db;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: none; /* Initially hidden */
     text-align: left;
-    font-size: 1.1em;
-    min-height: 100px; /* Ensure enough space */
+    flex-grow: 1; /* Allow this to grow */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    border-radius: 0 5px 5px 0;
-    color: #34495e;
-    box-sizing: border-box;
-    white-space: pre-wrap;
-    position: relative;
+    justify-content: flex-start;
 }
 
-.primary {
-    flex: 1; /* Takes available space */
-    border-top-right-radius: 0; /* Connect to extended box */
-    border-bottom-right-radius: 0;
-    margin-right: 5px; /* Small gap between boxes */
-    background-color: #eaf2f8; /* Standard color */
-}
-
-.extended {
-    flex: 1; /* Takes available space */
-    border-top-left-radius: 0; /* Connect to primary box */
-    border-bottom-left-radius: 0;
-    background-color: #f0f8ff; /* Slightly different background */
-    border-left-color: #2ecc71; /* Green border for advice */
-    flex-direction: column; /* Stack content vertically */
-}
-
-.hidden {
-    display: none;
-}
-
-.details-trigger {
-    font-size: 0.8em;
-    color: #3498db;
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 15px;
-    transition: color 0.2s ease;
-    align-self: center; /* Center the trigger text */
-    width: 100%; /* Ensure it takes full width to center */
-    text-align: center; /* Center text within its width */
-}
-
-.details-trigger:hover {
-    color: #2980b9;
-}
-
-.extended h2 {
-    font-size: 1.2em;
-    margin-top: 0;
+.results-container h2 {
     color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-#detailsContent ul {
-    padding-left: 20px;
-    margin-top: 0;
-    font-size: 0.9em;
-    line-height: 1.6;
-}
-
-#detailsContent li {
-    margin-bottom: 8px;
-}
-
-.close-details-button {
-    background-color: #e74c3c; /* Red close button */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    font-size: 0.8em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-    align-self: center; /* Center the button */
-}
-
-.close-details-button:hover {
-    background-color: #c0392b;
-}
-
-/* --- Footer Styling --- */
-.site-footer {
-    width: 100%;
-    padding: 15px 0;
-    background-color: #24292f;
-    color: #c9d1d9;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.footer-links {
     margin-bottom: 10px;
 }
 
-.repo-link-button {
-    color: #58a6ff;
+#strengthIndicator {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#timeToCrack {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.password-info {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 5px solid #3498db;
+}
+
+.password-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.footer-container {
+    width: 100%;
+    text-align: center;
+    margin-top: auto; /* Push to bottom */
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.repo-link a {
+    color: #3498db;
     text-decoration: underline;
-    transition: color 0.2s ease, text-decoration 0.2s ease;
-    font-weight: 500;
-    font-size: 0.9em;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.repo-link-button:hover {
-    color: #79c0ff;
-    text-decoration: none;
+.copyright {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-.copyright-text {
-    margin: 0;
-    color: #8b949e;
-    opacity: 0.7;
-    font-size: 0.75em;
-}
-
-/* --- Responsive adjustments --- */
-@media (max-width: 768px) {
-    .content-wrapper {
-        padding-top: 20px;
-    }
+/* Responsive adjustments */
+@media (max-width: 600px) {
     .container {
-        width: 95%;
-        padding: 25px 30px;
+        padding: 25px;
     }
     h1 {
-        font-size: 1.8em;
+        font-size: 24px;
     }
     button {
-        font-size: 16px;
+        font-size: 14px;
         padding: 10px 20px;
     }
-    #result {
-        font-size: 1em;
-    }
-    #disclaimer {
-        font-size: 0.8em;
-        padding: 10px 15px;
-        width: calc(100% - 30px);
-    }
-    .password-wrapper input[type="password"],
-    .password-wrapper input[type="text"] {
-        width: calc(100% - 40px);
-    }
-
-    /* Stack boxes vertically on smaller screens */
-    .results-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .results-box {
-        width: 100%;
-        max-width: 500px;
-        margin-bottom: 10px;
-        border-radius: 5px !important; /* Apply radius when stacked */
-        min-height: unset; /* Let content define height */
-        padding: 15px; /* Ensure padding is consistent */
-    }
-
-    .primary {
-        margin-right: 0; /* No margin when stacked */
-    }
-
-    .extended {
-        margin-bottom: 10px; /* Space between boxes */
-    }
-
-    .details-trigger, .close-details-button {
-        font-size: 0.75em;
-    }
-
-    .footer-content {
-        max-width: 90%;
-    }
-    .repo-link-button {
-        font-size: 0.85em;
-    }
-    .copyright-text {
-        font-size: 0.7em;
-    }
-}
-
-/* --- NEW: Styles for the expanding details animation --- */
-.results-container.show-details {
-    /* When details are shown, the primary box needs to shift left
-       and the container needs to become wider to accommodate both. */
-    transform: translateX(-50%); /* Shift container left by half its current width */
-    width: calc(200% - 5px); /* Double width minus the gap for alignment */
-}
-
-/* Ensure the extended box aligns correctly when the primary moves */
-.results-container.show-details .extended {
-    margin-left: 5px; /* Add the gap back for visual separation */
-}
-
-/* Adjust widths of boxes when details are shown */
-.results-container.show-details .results-box.primary {
-    flex: 1 0 50%; /* Primary box takes 50% of the expanded width */
-}
-
-.results-container.show-details .results-box.extended {
-    flex: 1 0 50%; /* Extended box takes 50% of the expanded width */
-}
-
-/* Ensure border radii connect properly when side-by-side */
-.results-container.show-details .primary {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.results-container.show-details .extended {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
