@@ -1,50 +1,91 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Light background for the main page */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space: main content and footer */
     align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #333;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1; /* Allows this wrapper to take available space */
 }
 
 .container {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 90%;
-    max-width: 700px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 500px;
-}
-
-.input-box {
-    margin-bottom: 30px;
+    max-width: 500px;
+    /* margin-bottom: 30px; Removed as footer handles spacing */
+    flex-shrink: 0;
 }
 
 h1 {
     color: #2c3e50;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 2.2em;
 }
 
-p {
+.input-group {
     margin-bottom: 20px;
-    line-height: 1.6;
+    text-align: left;
 }
 
-input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin-bottom: 20px;
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input[type="password"],
+input[type="text"] {
+    width: calc(100% - 40px); /* Account for padding and icon space */
+    padding: 12px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #777;
+    font-size: 1.1em;
+    padding: 5px;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.password-toggle-icon:hover {
+    color: #3498db;
 }
 
 button {
@@ -52,88 +93,156 @@ button {
     color: white;
     border: none;
     padding: 12px 25px;
+    font-size: 17px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
-.results-container {
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#result {
     margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-    display: none; /* Initially hidden */
+    padding: 15px;
+    background-color: #eaf2f8;
+    border-left: 5px solid #3498db;
     text-align: left;
-    flex-grow: 1; /* Allow this to grow */
+    font-size: 1.1em;
+    min-height: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    color: #34495e;
+    box-sizing: border-box;
+    white-space: pre-wrap;
 }
 
-.results-container h2 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-#strengthIndicator {
+#result span {
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-#timeToCrack {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.password-info {
-    background-color: #ecf0f1;
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 5px solid #3498db;
-}
-
-.password-info h3 {
-    margin-top: 0;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.footer-container {
-    width: 100%;
-    text-align: center;
-    margin-top: auto; /* Push to bottom */
-    padding-top: 20px;
+#disclaimer {
+    font-size: 0.85em;
+    color: #7f8c8d;
+    padding: 10px;
     border-top: 1px solid #eee;
+    width: 100%; /* Match container width */
+    box-sizing: border-box;
+    margin-top: 0;
 }
 
-.repo-link a {
-    color: #3498db;
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer Styling - Refined for GitHub-like appearance */
+.site-footer {
+    width: 100%;
+    padding: 15px 0; /* Reduced padding slightly */
+    background-color: #24292f; /* Dark background */
+    color: #c9d1d9; /* Light text */
+    font-size: 0.8em; /* Base footer font size */
+    box-sizing: border-box;
+    /* margin-top: auto; Removed as body handles spacing */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    max-width: 980px; /* Standard max width */
+    margin: 0 auto; /* Center the content */
+    padding: 0 15px; /* Horizontal padding */
+}
+
+.footer-links {
+    margin-bottom: 10px; /* Space below the link group */
+}
+
+.repo-link-button {
+    color: #58a6ff; /* GitHub link blue */
     text-decoration: underline;
-    cursor: pointer;
-    font-size: 14px;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    font-weight: 500;
+    font-size: 0.9em; /* Slightly larger link text */
 }
 
-.copyright {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    margin-top: 5px;
+.repo-link-button:hover {
+    color: #79c0ff; /* Lighter blue on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+.copyright-text {
+    margin: 0;
+    color: #8b949e; /* Greyish text for copyright */
+    opacity: 0.7; /* Reduced opacity */
+    font-size: 0.75em; /* Smaller font size for copyright */
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding-top: 20px; /* Add some space at the top for smaller screens */
+    }
     .container {
-        padding: 25px;
+        width: 95%;
+        padding: 25px 30px;
     }
     h1 {
-        font-size: 24px;
+        font-size: 1.8em;
     }
     button {
-        font-size: 14px;
+        font-size: 16px;
         padding: 10px 20px;
+    }
+    #result {
+        font-size: 1em;
+    }
+    #disclaimer {
+        font-size: 0.8em;
+        padding: 10px 15px;
+        width: calc(100% - 30px);
+    }
+    .password-wrapper input[type="password"],
+    .password-wrapper input[type="text"] {
+        width: calc(100% - 40px);
+    }
+
+    .footer-content {
+        max-width: 90%;
+    }
+    .repo-link-button {
+        font-size: 0.85em;
+    }
+    .copyright-text {
+        font-size: 0.7em; /* Further reduce copyright size on small screens */
     }
 }
